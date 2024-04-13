@@ -7,12 +7,10 @@ public class CreaturesSummon : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private float animationTime = 0.5f;
     [SerializeField] private RectTransform moveCellRect;
-    [SerializeField] private GameObject targetHighlighter;
     [SerializeField] private Tilemap tilemapForPlacingCreatures;
     [SerializeField] private RectTransform[] openingButtons;
     [SerializeField] private CreatureCell[] cells = new CreatureCell[0];
     
-    public GameObject TargetHighlighter => targetHighlighter;
     private CreatureCell takedCell;
     private bool canClick = true;
     private bool isMenuOpened;
