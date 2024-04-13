@@ -7,6 +7,7 @@ public class WizardBase : MonoBehaviour
 {
 	[SerializeField] protected GameObject highlighterPrefab;
 	[SerializeField] protected int actionLineLenght = 2;
+	[SerializeField] protected SpriteRenderer spriteRenderer;
 
 	protected CreaturesSummon creatureSummonController;
 	protected Vector3Int cellIntPos;
@@ -56,7 +57,15 @@ public class WizardBase : MonoBehaviour
 			currentTargetHighlightRotIndex = 0;
 		else
 			currentTargetHighlightRotIndex++;
-		HighlightTarget();
+
+
+		if (currentTargetHighlightRotIndex == 0)
+			spriteRenderer.flipX = true;
+		else if (currentTargetHighlightRotIndex == 2)
+			spriteRenderer.flipX = false;
+
+
+            HighlightTarget();
 	}
 	protected void HighlightTarget()
 	{
@@ -68,6 +77,8 @@ public class WizardBase : MonoBehaviour
 				highlightersLine[i] = Instantiate(highlighterPrefab, selfPlacingTilemap.GetCellCenterWorld
 				(cellIntPos + new Vector3Int(targetRotateVariants[currentTargetHighlightRotIndex].TargetXOffset * (i + 1),
 				targetRotateVariants[currentTargetHighlightRotIndex].TargetYOffset * (i + 1), 0)), Quaternion.identity);
+			else
+				return;
 	}
 
 	protected void DeactivateTargetHighlight()

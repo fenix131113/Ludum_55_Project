@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class WizardActionsController : MonoBehaviour
 {
-    public static WizardActionsController Instance;
+    [SerializeField] private Tilemap slimesTilemap;
 
     private List<ActionWizardObject> actionObjects = new();
 
+    public static WizardActionsController Instance;
+    public Tilemap SlimesTilemap => slimesTilemap;
 
     private void Awake()
     {

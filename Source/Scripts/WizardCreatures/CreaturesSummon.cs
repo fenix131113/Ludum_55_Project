@@ -81,6 +81,7 @@ public class CreaturesSummon : MonoBehaviour, IPointerClickHandler
             {
                 GameObject createdWizard = Instantiate(takedCell.CreaturePrefab, tilemapForPlacingCreatures.GetCellCenterWorld(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)), Quaternion.identity);
                 createdWizard.GetComponent<WizardBase>().Init(this, tilemapForPlacingCreatures.WorldToCell(mouseWorldPos), tilemapForPlacingCreatures);
+                createdWizard.transform.position += new Vector3(0, createdWizard.transform.lossyScale.y / 4f, 0);
                 takedCell.CanUse = false;
                 takedCell = null;
             }

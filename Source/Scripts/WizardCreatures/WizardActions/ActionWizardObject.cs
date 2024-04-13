@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 public class ActionWizardObject : MonoBehaviour
 {
     [SerializeField] private Tilemap selfPlacedTilemap;
+    [SerializeField] private bool isSlime;
     [SerializeField][Header("Width % 3 == 0")] private int width;
     [SerializeField][Header("Height % 3 == 0")] private int height;
 
@@ -16,6 +17,9 @@ public class ActionWizardObject : MonoBehaviour
     {
         AlignObjectToTilemap();
         CalculateCoordinates();
+
+        if (isSlime)
+            selfPlacedTilemap = WizardActionsController.Instance.SlimesTilemap;
 
         WizardActionsController.Instance.RegisterActionObject(this);
     }
