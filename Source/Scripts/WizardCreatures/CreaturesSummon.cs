@@ -10,7 +10,7 @@ public class CreaturesSummon : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Tilemap tilemapForPlacingCreatures;
     [SerializeField] private RectTransform[] openingButtons;
     [SerializeField] private CreatureCell[] cells = new CreatureCell[0];
-    
+
     private CreatureCell takedCell;
     private bool canClick = true;
     private bool isMenuOpened;
@@ -77,10 +77,10 @@ public class CreaturesSummon : MonoBehaviour, IPointerClickHandler
         {
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (tilemapForPlacingCreatures.GetTile(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)) && takedCell)
+            if (tilemapForPlacingCreatures.GetTile(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)) && takedCell && !WizardActionsController.Instance.TryGetActionObjectByCell(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)))
             {
-                Instantiate(takedCell.CreaturePrefab, tilemapForPlacingCreatures.GetCellCenterWorld(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)), Quaternion.identity)
-                    .GetComponent<WizardBase>().Init(this, tilemapForPlacingCreatures.WorldToCell(mouseWorldPos), tilemapForPlacingCreatures);
+                GameObject createdWizard = Instantiate(takedCell.CreaturePrefab, tilemapForPlacingCreatures.GetCellCenterWorld(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)), Quaternion.identity);
+                createdWizard.GetComponent<WizardBase>().Init(this, tilemapForPlacingCreatures.WorldToCell(mouseWorldPos), tilemapForPlacingCreatures);
                 takedCell.CanUse = false;
                 takedCell = null;
             }

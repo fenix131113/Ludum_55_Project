@@ -14,14 +14,35 @@ public class WizardActionsController : MonoBehaviour
             Instance = this;
     }
 
-    private void RegisterActionObject(ActionWizardObject actionObject)
+    public void RegisterActionObject(ActionWizardObject actionObject)
     {
         if (!actionObjects.Contains(actionObject))
             actionObjects.Add(actionObject);
     }
 
-    private ActionWizardObject[] GetAllContactedActionObjects(WizardBase wizard)
+    public List<ActionWizardObject> GetAllContactedActionObjects(WizardBase wizard)
     {
-        throw new System.Exception();
+        List<ActionWizardObject> actionObjects = new();
+
+        foreach (Vector3Int coordinate in wizard.GetLineTilemapCellsCoordinates())
+        {
+            ActionWizardObject actionObject = TryGetActionObjectByCell(coordinate);
+
+            actionObjects.Add(actionObject);
+        }
+
+        if (actionObjects.Count > 0)
+            return actionObjects;
+        else
+            return null;
+    }
+
+    public ActionWizardObject TryGetActionObjectByCell(Vector3Int coordinates)
+    {
+        foreach (ActionWizardObject actionObject in actionObjects)
+            foreach (Vector3Int actionCoords in actionObject.Coordinates)
+                if (actionCoords == coordinates)
+                    return actionObject;
+        return null;
     }
 }
