@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1313131283383808175}
   - component: {fileID: 6625993889900517804}
+  - component: {fileID: 9044294785755362862}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -130,8 +131,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: Decoration
-  useDifferentTilemap: 0
+  overwriteTilemap: 0
   selfPlacedTilemap: {fileID: 0}
   isSlime: 0
+  canPlaceSlime: 0
+  stopsMissles: 1
   width: 1
   height: 1
+--- !u!61 &9044294785755362862
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347477616951955837}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.004700601, y: -0.05993277}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6427537, y: 0.86133206}
+  m_EdgeRadius: 0

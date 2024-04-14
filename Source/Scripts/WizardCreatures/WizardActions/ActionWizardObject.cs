@@ -5,9 +5,11 @@ using UnityEngine.Tilemaps;
 public class ActionWizardObject : MonoBehaviour
 {
     [SerializeField] private string objectType;
-    [SerializeField] private bool useDifferentTilemap;
+    [SerializeField] private bool overwriteTilemap;
     [SerializeField] private Tilemap selfPlacedTilemap;
     [SerializeField] private bool isSlime;
+    [SerializeField] private bool canPlaceSlime;
+    [SerializeField] private bool stopsMissles;
     [SerializeField][Header("Width % 3 == 0")] private int width = 1;
     [SerializeField][Header("Height % 3 == 0")] private int height = 1;
 
@@ -17,10 +19,14 @@ public class ActionWizardObject : MonoBehaviour
     public Vector3Int GetFirstCoordinate => coordinates[0];
     public bool IsSlime => isSlime;
     public string ObjectType => objectType;
+    public bool CanPlaceSlime => canPlaceSlime;
+    public bool StopsMissles => stopsMissles;
+
+    public void SetObjectType(string newType) => objectType = newType;
 
     private void Start()
     {
-        if (!useDifferentTilemap)
+        if (!overwriteTilemap)
             selfPlacedTilemap = WizardActionsController.Instance.SlimesTilemap;
 
         AlignObjectToTilemap();

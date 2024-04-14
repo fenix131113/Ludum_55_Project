@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Iceball : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private string objectInteractionType;
     [SerializeField] private Rigidbody2D rb;
 
     private GameObject ignoreGameObject;
@@ -28,12 +28,30 @@ public class Iceball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject != ignoreGameObject && !collision.GetComponent<ActionWizardObject>())
+        ActionWizardObject actionObj = collision.GetComponent<ActionWizardObject>();
+
+        if (collision.gameObject != ignoreGameObject && !actionObj)
             Destroy(gameObject);
-        else if (collision.GetComponent<ActionWizardObject>() && collision.GetComponent<ActionWizardObject>().ObjectType == objectInteractionType)
-        {
-            Destroy(collision.gameObject);
+        else if (actionObj && actionObj.StopsMissles)
             Destroy(gameObject);
-        }
+
+        else if (actionObj)
+            switch (actionObj.ObjectType)
+            {
+                case "Water":
+                    SetWaterToIce(actionObj);
+                    Destroy(gameObject);
+                    break;
+                case "FireBall":
+                    Destroy(collision.gameObject);
+                    Destroy(gameObject);
+                    break;
+            }
+    }
+
+    private void SetWaterToIce(ActionWizardObject iceObject)
+    {
+        iceObject.gameObject.layer = 3;
+        iceObject.SetObjectType("Ice");
     }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Wind : MonoBehaviour
 {
-    [SerializeField] private string interactionObjType;
-
     private Vector3 targetPosition;
     private float animationTime;
     private int rotateIndex;
@@ -35,7 +33,7 @@ public class Wind : MonoBehaviour
 
         Vector3 moveTo = actions.SlimesTilemap.GetCellCenterWorld(actionObj.Coordinates.ElementAt(0) + new Vector3Int(fourRotate.TargetXOffset, fourRotate.TargetYOffset));
         Vector3Int moveToCellCoords = actionObj.Coordinates.ElementAt(0) + new Vector3Int(fourRotate.TargetXOffset, fourRotate.TargetYOffset);
-        if (actionObj && actionObj.ObjectType == interactionObjType && !actions.TryGetActionObjectByCell(moveToCellCoords) && actions.SlimesTilemap.GetTile(moveToCellCoords))
+        if (actionObj && actionObj.ObjectType == "Movable" && !actions.TryGetActionObjectByCell(moveToCellCoords) && actions.SlimesTilemap.GetTile(moveToCellCoords))
         {
             GetComponent<Collider2D>().enabled = false;
 

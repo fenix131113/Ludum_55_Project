@@ -3,7 +3,6 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private string objectInteractionType;
     [SerializeField] private Rigidbody2D rb;
 
     private GameObject ignoreGameObject;
@@ -28,12 +27,20 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject != ignoreGameObject && !collision.GetComponent<ActionWizardObject>())
+        ActionWizardObject actionObj = collision.GetComponent<ActionWizardObject>();
+        if (collision.gameObject != ignoreGameObject && !actionObj)
             Destroy(gameObject);
-        else if (collision.GetComponent<ActionWizardObject>() && collision.GetComponent<ActionWizardObject>().ObjectType == objectInteractionType)
-        {
-            Destroy(collision.gameObject);
+        else if(actionObj && actionObj.StopsMissles)
             Destroy(gameObject);
-        }
+
+        else if (actionObj)
+            switch (actionObj.ObjectType)
+            {
+                case "Water":
+                case "Ice":
+                    Destroy(collision.gameObject);
+                    Destroy(gameObject);
+                    break;
+            }
     }
 }

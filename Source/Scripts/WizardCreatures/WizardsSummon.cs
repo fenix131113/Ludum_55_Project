@@ -77,19 +77,26 @@ public class WizardsSummon : MonoBehaviour, IPointerClickHandler
         if (Input.GetMouseButtonUp(0))
         {
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            if (tilemapForPlacingCreatures.GetTile(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)) && takedCell && !WizardActionsController.Instance.TryGetActionObjectByCell(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)))
+            ActionWizardObject action = WizardActionsController.Instance.TryGetActionObjectByCell(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos));
+            if (tilemapForPlacingCreatures.GetTile(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)) && takedCell)
             {
-                GameObject createdWizard = Instantiate(takedCell.CreaturePrefab, tilemapForPlacingCreatures.GetCellCenterWorld(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)) + new Vector3(0, summonYOffset, 0), Quaternion.identity);
-                createdWizard.GetComponent<WizardBase>().Init(this, tilemapForPlacingCreatures.WorldToCell(mouseWorldPos), tilemapForPlacingCreatures);
-                takedCell.CanUse = false;
-                takedCell = null;
+                if (!action)
+                    SpawnSlime(mouseWorldPos);
+                else if (action.CanPlaceSlime)
+                    SpawnSlime(mouseWorldPos);
             }
 
             DeactivateMovingCell();
         }
     }
 
+    private void SpawnSlime(Vector3 mouseWorldPos)
+    {
+        GameObject createdWizard = Instantiate(takedCell.CreaturePrefab, tilemapForPlacingCreatures.GetCellCenterWorld(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)) + new Vector3(0, summonYOffset, 0), Quaternion.identity);
+        createdWizard.GetComponent<WizardBase>().Init(this, tilemapForPlacingCreatures.WorldToCell(mouseWorldPos), tilemapForPlacingCreatures);
+        takedCell.CanUse = false;
+        takedCell = null;
+    }
     public void ActivateMovingCell()
     {
         moveCellRect.gameObject.SetActive(true);
