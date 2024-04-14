@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3a7fdece3fee07843a859ffc6b34fead
+guid: e4198bb17aa9036488433879f6c4b269
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerWalkSheet_0
+      name: PropsPack_1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 64
+        x: 53
+        y: 1
+        width: 18
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,92 +137,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9efa78e6098f8a447b5044f18a1cc96b
-      internalID: 1334977046
+      spriteID: e5fd6ba3a3a9614498dbae309cd81db6
+      internalID: -886962744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalkSheet_1
+      name: PropsPack_1_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 1
+        width: 18
+        height: 23
+      alignment: 9
+      pivot: {x: 0.51162934, y: 0.75353426}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a21bdd83073cec4896bd1367da3cf8e
-      internalID: -861366642
+      spriteID: cd6b14529855cff47af5281498522fbd
+      internalID: 1057207047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalkSheet_2
+      name: PropsPack_1_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 17
+        y: 1
+        width: 15
+        height: 23
+      alignment: 9
+      pivot: {x: 0.4908193, y: 0.8466085}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd626057c345a83458fe34f7cd6d6050
-      internalID: -501061363
+      spriteID: 6bfacf6764f113e489948c6ca56a7e17
+      internalID: -29771302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalkSheet_3
+      name: PropsPack_1_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 1
+        width: 17
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0.98524445}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a20c9d024a4be5c47974f711ce201123
-      internalID: 1062938601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayerWalkSheet_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d10bbb0dd6e3bd45bc60febc139551c
-      internalID: -1977504265
+      spriteID: 8f4cdaf7269b71f4ebaf322624fee80d
+      internalID: -111583266
       vertices: []
       indices: 
       edges: []
@@ -238,11 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PlayerWalkSheet_0: 1334977046
-      PlayerWalkSheet_1: -861366642
-      PlayerWalkSheet_2: -501061363
-      PlayerWalkSheet_3: 1062938601
-      PlayerWalkSheet_4: -1977504265
+      PropsPack_1_0: -886962744
+      PropsPack_1_1: 1057207047
+      PropsPack_1_2: -29771302
+      PropsPack_1_3: -111583266
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

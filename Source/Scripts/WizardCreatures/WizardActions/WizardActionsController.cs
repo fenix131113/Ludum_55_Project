@@ -5,13 +5,15 @@ using UnityEngine.Tilemaps;
 public class WizardActionsController : MonoBehaviour
 {
     [SerializeField] private Tilemap slimesTilemap;
-    [SerializeField] private List<DirtBlock> dirtsBlocks;
+    [SerializeField] private List<DirtBlock> dirtBlocks;
+    [SerializeField] private List<GrassBlock> grassBlocks;
 
     private List<ActionWizardObject> actionObjects = new();
 
     public static WizardActionsController Instance;
     public Tilemap SlimesTilemap => slimesTilemap;
-    public IReadOnlyList<DirtBlock> DirtBlocks => dirtsBlocks;
+    public IReadOnlyList<GrassBlock> GrassBlocks => grassBlocks;
+    public IReadOnlyList<DirtBlock> DirtBlocks => dirtBlocks;
 
     private void Awake()
     {

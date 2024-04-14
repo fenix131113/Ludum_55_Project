@@ -1,4 +1,4 @@
-public class DirtBlock : ActionWizardObject
+public class GrassBlock : ActionWizardObject
 {
     public void ChangeState()
     {
