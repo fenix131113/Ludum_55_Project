@@ -5,11 +5,13 @@ using UnityEngine.Tilemaps;
 public class WizardActionsController : MonoBehaviour
 {
     [SerializeField] private Tilemap slimesTilemap;
+    [SerializeField] private List<DirtBlock> dirtsBlocks;
 
     private List<ActionWizardObject> actionObjects = new();
 
     public static WizardActionsController Instance;
     public Tilemap SlimesTilemap => slimesTilemap;
+    public IReadOnlyList<DirtBlock> DirtBlocks => dirtsBlocks;
 
     private void Awake()
     {
@@ -30,8 +32,16 @@ public class WizardActionsController : MonoBehaviour
         foreach (Vector3Int coordinate in wizard.GetLineTilemapCellsCoordinates())
         {
             ActionWizardObject actionObject = TryGetActionObjectByCell(coordinate);
+            if(!actionObject)
+                continue;
 
-            actionObjects.Add(actionObject);
+            WizardBase gettedWizard = GetComponent<WizardBase>();
+
+            if (gettedWizard && gettedWizard.gameObject.GetHashCode() == wizard.gameObject.GetHashCode())
+                continue;
+
+            if (actionObject != null && !actionObjects.Contains(actionObject))
+                actionObjects.Add(actionObject);
         }
 
         if (actionObjects.Count > 0)

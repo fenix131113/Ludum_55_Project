@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 
 public class ActionWizardObject : MonoBehaviour
 {
+    [SerializeField] private string objectType;
     [SerializeField] private Tilemap selfPlacedTilemap;
     [SerializeField] private bool isSlime;
     [SerializeField][Header("Width % 3 == 0")] private int width;
@@ -12,14 +13,17 @@ public class ActionWizardObject : MonoBehaviour
     private List<Vector3Int> coordinates = new();
 
     public IReadOnlyCollection<Vector3Int> Coordinates => coordinates;
+    public Vector3Int GetFirstCoordinate => coordinates[0];
+    public bool IsSlime => isSlime;
+    public string ObjectType => objectType;
 
     private void Start()
     {
-        AlignObjectToTilemap();
-        CalculateCoordinates();
-
         if (isSlime)
             selfPlacedTilemap = WizardActionsController.Instance.SlimesTilemap;
+
+        AlignObjectToTilemap();
+        CalculateCoordinates();
 
         WizardActionsController.Instance.RegisterActionObject(this);
     }
@@ -27,7 +31,19 @@ public class ActionWizardObject : MonoBehaviour
     private void AlignObjectToTilemap()
     {
         coordinates.Add(selfPlacedTilemap.WorldToCell(transform.position));
+
+        if (isSlime)
+            return;
+
         transform.position = selfPlacedTilemap.GetCellCenterWorld(coordinates[0]);
+    }
+
+    public void SetOnlyOneCoordinate(Vector3Int coordinate)
+    {
+        coordinates = new()
+        {
+            coordinate
+        };
     }
 
     private void CalculateCoordinates()
