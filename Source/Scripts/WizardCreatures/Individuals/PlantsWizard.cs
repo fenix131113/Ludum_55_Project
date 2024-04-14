@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlantsWizard : WizardBase
@@ -18,7 +19,7 @@ public class PlantsWizard : WizardBase
         if (actions.GrassBlocks.Count > 0)
             foreach (var block in actions.GrassBlocks)
             {
-                grassHighliters.Add(Instantiate(highlighterPrefab, actions.SlimesTilemap.GetCellCenterWorld(block.GetFirstCoordinate), Quaternion.identity));
+                grassHighliters.Add(Instantiate(highlighterPrefab, actions.SlimesTilemap.GetCellCenterWorld(block.Coordinates.ElementAt(0)), Quaternion.identity));
                 block.ChangeState();
             }
     }

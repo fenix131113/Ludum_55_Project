@@ -4,23 +4,30 @@ using UnityEngine;
 public class DirtWizard : WizardBase
 {
     private List<GameObject> dirtHighliters = new();
-    protected override void AfterInit() =>
+    protected override void AfterInit()
+    {
         highlightersLine = new GameObject[WizardActionsController.Instance.DirtBlocks.Count];
+        WizardAction();
+    }
 
     protected override void RotateWizard()
     {
         return;
     }
+
+    public override void WizardAction()
+    {
+        foreach (DirtBlock block in WizardActionsController.Instance.DirtBlocks)
+            block.ChangeState();
+    }
+
     protected override void HighlightTarget()
     {
         WizardActionsController actions = WizardActionsController.Instance;
 
         if (actions.DirtBlocks.Count > 0)
-            foreach (var block in actions.DirtBlocks)
-            {
+            foreach (DirtBlock block in actions.DirtBlocks)
                 dirtHighliters.Add(Instantiate(highlighterPrefab, actions.SlimesTilemap.GetCellCenterWorld(block.GetFirstCoordinate), Quaternion.identity));
-                block.ChangeState();
-            }
     }
 
     protected override void ClearHighlightArray()

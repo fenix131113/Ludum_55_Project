@@ -31,7 +31,7 @@ public class Wind : MonoBehaviour
         if (!actionObj)
             return;
 
-        Vector3 moveTo = actions.SlimesTilemap.GetCellCenterWorld(actionObj.Coordinates.ElementAt(0) + new Vector3Int(fourRotate.TargetXOffset, fourRotate.TargetYOffset));
+        Vector3 moveTo = actions.SlimesTilemap.GetCellCenterWorld(actionObj.GetFirstCoordinate + new Vector3Int(fourRotate.TargetXOffset, fourRotate.TargetYOffset));
         Vector3Int moveToCellCoords = actionObj.Coordinates.ElementAt(0) + new Vector3Int(fourRotate.TargetXOffset, fourRotate.TargetYOffset);
         if (actionObj && actionObj.ObjectType == "Movable" && !actions.TryGetActionObjectByCell(moveToCellCoords) && actions.SlimesTilemap.GetTile(moveToCellCoords))
         {

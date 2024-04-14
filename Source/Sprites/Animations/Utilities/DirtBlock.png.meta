@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 80c9d70fd28247445908c0e61f53a8ef
+guid: af96387b904657f49846d2055d6a9cc2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,274 +123,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spawn_0
+      name: DirtBlock_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        x: 392
+        y: 24
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a082840940e97c46905a0296ebf4d16
-      internalID: -525266431
+      spriteID: 5c6f88a5a1f449648b323aec9afd4602
+      internalID: -972004718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spawn_1
+      name: DirtBlock_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        x: 328
+        y: 24
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aaf97f0089f53342b79ae01540e9550
-      internalID: 1894753154
+      spriteID: 11a3d1f662634f349a20ee24ea28c6c1
+      internalID: -411062608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spawn_2
+      name: DirtBlock_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        x: 456
+        y: 24
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e6d6dcec866f35439d42687ff25e245
-      internalID: -1523585596
+      spriteID: 215a0b34232ad9047a59b0b2410e7eb3
+      internalID: 2076262471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spawn_3
+      name: DirtBlock_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        x: 504
+        y: 24
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 721a4d5b8d692754789ed8b897380cfa
-      internalID: 1909076537
+      spriteID: 4d598c80679f6b04da361839b5fdfb6d
+      internalID: 629813920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spawn_4
+      name: DirtBlock_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        x: 264
+        y: 24
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14d4e09746785cb40aecc69184d01aed
-      internalID: 1297378297
+      spriteID: b19df979178f163459f216a383d3f31c
+      internalID: 1326048991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spawn_5
+      name: DirtBlock_5
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        x: 199
+        y: 23
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4d673890f111034ebd0ee6308af1d8e
-      internalID: 982768319
+      spriteID: 4d53efd5407833b4e9c25adc3cea6a21
+      internalID: -1172802043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spawn_6
+      name: DirtBlock_6
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        x: 124
+        y: 23
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d85e52b8fa733654d841727a9baec505
-      internalID: 618430942
+      spriteID: 3a1e3ffbff4d91143857d993f3fd83b3
+      internalID: -614891488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spawn_7
+      name: DirtBlock_7
       rect:
         serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        x: 55
+        y: 23
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8d13c71f2e4b6b47896006796706bba
-      internalID: -1092575786
+      spriteID: b31ed0dcd093ebd47af921ee8f6f1571
+      internalID: -258767375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spawn_8
+      name: DirtBlock_8
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+        x: 4
+        y: 23
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b7d9126aadaf3048af8aed0f35908ef
-      internalID: 141077251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spawn_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: debfb82e1dee1ba40a059472c75e0244
-      internalID: 1525932932
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spawn_10
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dde7bfd0b182428448db942bb63e91ba
-      internalID: 707781581
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spawn_11
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26cf191abdda1184a8e1ab3287fd3909
-      internalID: 1242370691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spawn_12
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 64
-        height: 192
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e338446d9daecc48b18d432593293b0
-      internalID: 1236159864
+      spriteID: b5d9778239c307e49b01f924cbc8d0de
+      internalID: 1365447261
       vertices: []
       indices: 
       edges: []
@@ -406,19 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Spawn_0: -525266431
-      Spawn_1: 1894753154
-      Spawn_10: 707781581
-      Spawn_11: 1242370691
-      Spawn_12: 1236159864
-      Spawn_2: -1523585596
-      Spawn_3: 1909076537
-      Spawn_4: 1297378297
-      Spawn_5: 982768319
-      Spawn_6: 618430942
-      Spawn_7: -1092575786
-      Spawn_8: 141077251
-      Spawn_9: 1525932932
+      DirtBlock_0: -972004718
+      DirtBlock_1: -411062608
+      DirtBlock_2: 2076262471
+      DirtBlock_3: 629813920
+      DirtBlock_4: 1326048991
+      DirtBlock_5: -1172802043
+      DirtBlock_6: -614891488
+      DirtBlock_7: -258767375
+      DirtBlock_8: 1365447261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

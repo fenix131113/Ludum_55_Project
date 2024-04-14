@@ -1,4 +1,6 @@
 using DG.Tweening;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
@@ -11,6 +13,8 @@ public class WizardsSummon : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Tilemap tilemapForPlacingCreatures;
     [SerializeField] private RectTransform[] openingButtons;
     [SerializeField] private WizardCell[] cells = new WizardCell[0];
+    [SerializeField] private GameObject spawnAnimPrefab;
+    [SerializeField] private AnimationClip spawnAnimation;
 
     private WizardCell takedCell;
     private bool canClick = true;
@@ -78,20 +82,23 @@ public class WizardsSummon : MonoBehaviour, IPointerClickHandler
         {
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             ActionWizardObject action = WizardActionsController.Instance.TryGetActionObjectByCell(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos));
+
             if (tilemapForPlacingCreatures.GetTile(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)) && takedCell)
             {
                 if (!action)
-                    SpawnSlime(mouseWorldPos);
+                    StartCoroutine(SpawnSlime(mouseWorldPos));
                 else if (action.CanPlaceSlime)
-                    SpawnSlime(mouseWorldPos);
+                    StartCoroutine(SpawnSlime(mouseWorldPos));
             }
 
             DeactivateMovingCell();
         }
     }
 
-    private void SpawnSlime(Vector3 mouseWorldPos)
+    private IEnumerator SpawnSlime(Vector3 mouseWorldPos)
     {
+        Destroy(Instantiate(spawnAnimPrefab, tilemapForPlacingCreatures.GetCellCenterWorld(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)), Quaternion.identity), spawnAnimation.length);
+        yield return new WaitForSeconds(0.3f);
         GameObject createdWizard = Instantiate(takedCell.CreaturePrefab, tilemapForPlacingCreatures.GetCellCenterWorld(tilemapForPlacingCreatures.WorldToCell(mouseWorldPos)) + new Vector3(0, summonYOffset, 0), Quaternion.identity);
         createdWizard.GetComponent<WizardBase>().Init(this, tilemapForPlacingCreatures.WorldToCell(mouseWorldPos), tilemapForPlacingCreatures);
         takedCell.CanUse = false;

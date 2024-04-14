@@ -19,31 +19,27 @@ public class ActionWizardObject : MonoBehaviour
     public Vector3Int GetFirstCoordinate => coordinates[0];
     public bool IsSlime => isSlime;
     public string ObjectType => objectType;
-    public bool CanPlaceSlime => canPlaceSlime;
-    public bool StopsMissles => stopsMissles;
+    public bool CanPlaceSlime { get { return canPlaceSlime; } set { canPlaceSlime = value; } }
+    public bool StopsMissles { get { return stopsMissles; } set { stopsMissles = value; } }
 
     public void SetObjectType(string newType) => objectType = newType;
 
-    private void Start()
+    private void Awake()
     {
         if (!overwriteTilemap)
             selfPlacedTilemap = WizardActionsController.Instance.SlimesTilemap;
 
-        AlignObjectToTilemap();
+        coordinates.Add(selfPlacedTilemap.WorldToCell(transform.position));
+
+        if (!isSlime)
+            AlignObjectToTilemap();
+
         CalculateCoordinates();
 
         WizardActionsController.Instance.RegisterActionObject(this);
     }
 
-    private void AlignObjectToTilemap()
-    {
-        coordinates.Add(selfPlacedTilemap.WorldToCell(transform.position));
-
-        if (isSlime)
-            return;
-
-        transform.position = selfPlacedTilemap.GetCellCenterWorld(coordinates[0]);
-    }
+    private void AlignObjectToTilemap() => transform.position = selfPlacedTilemap.GetCellCenterWorld(coordinates[0]);
 
     public void SetOnlyOneCoordinate(Vector3Int coordinate)
     {
@@ -53,7 +49,7 @@ public class ActionWizardObject : MonoBehaviour
         };
     }
 
-    private void CalculateCoordinates()
+    protected void CalculateCoordinates()
     {
         if (width > 1)
         {

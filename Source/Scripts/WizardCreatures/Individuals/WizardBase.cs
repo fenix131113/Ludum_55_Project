@@ -106,6 +106,11 @@ public class WizardBase : MonoBehaviour
                 Destroy(obj);
     }
 
+    public virtual void OnClick()
+    {
+        RotateWizard();
+    }
+
     public void OnMouseEnter()
     {
         HighlightTarget();
@@ -117,7 +122,7 @@ public class WizardBase : MonoBehaviour
     }
     public void OnMouseDown()
     {
-        RotateWizard();
+        OnClick();
     }
 }
 

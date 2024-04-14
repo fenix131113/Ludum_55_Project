@@ -42,7 +42,7 @@ public class Iceball : MonoBehaviour
                     SetWaterToIce(actionObj);
                     Destroy(gameObject);
                     break;
-                case "FireBall":
+                case "FireWall":
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
                     break;
@@ -53,5 +53,6 @@ public class Iceball : MonoBehaviour
     {
         iceObject.gameObject.layer = 3;
         iceObject.SetObjectType("Ice");
+        iceObject.CanPlaceSlime = true;
     }
 }
