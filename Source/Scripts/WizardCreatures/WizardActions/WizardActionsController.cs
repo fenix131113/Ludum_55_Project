@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -34,7 +35,7 @@ public class WizardActionsController : MonoBehaviour
         foreach (Vector3Int coordinate in wizard.GetLineTilemapCellsCoordinates())
         {
             ActionWizardObject actionObject = TryGetActionObjectByCell(coordinate);
-            if(!actionObject)
+            if (!actionObject)
                 continue;
 
             WizardBase gettedWizard = GetComponent<WizardBase>();

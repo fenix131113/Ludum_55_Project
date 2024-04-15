@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Iceball : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Iceball : MonoBehaviour
     private GameObject ignoreGameObject;
     private Transform iceSlime;
     private float destroyDistance;
+    private bool dontDestroyByDistance;
 
     private int rotateIndex;
     public void Init(int rotateIndex, GameObject ignoreObject, float destroyDistance, Transform iceSlime)
@@ -21,8 +23,9 @@ public class Iceball : MonoBehaviour
     private void Update()
     {
         FourRotateOffsetArgs rotate = FourRotateOffsetArgs.fourRotates[rotateIndex];
+
         rb.velocity = new Vector2(rotate.TargetXOffset, rotate.TargetYOffset) * speed;
-        if (Vector2.Distance(transform.position, iceSlime.position) >= destroyDistance)
+        if (Vector2.Distance(transform.position, iceSlime.position) >= destroyDistance && !dontDestroyByDistance)
             Destroy(gameObject);
     }
 
@@ -32,9 +35,8 @@ public class Iceball : MonoBehaviour
 
         if (collision.gameObject != ignoreGameObject && !actionObj)
             Destroy(gameObject);
-        else if (actionObj && actionObj.StopsMissles)
+        else if (actionObj && actionObj.StopsMissles && !actionObj.GetComponent<WaterWizard>())
             Destroy(gameObject);
-
         else if (actionObj)
             switch (actionObj.ObjectType)
             {
@@ -43,16 +45,31 @@ public class Iceball : MonoBehaviour
                     Destroy(gameObject);
                     break;
                 case "FireWall":
-                    Destroy(collision.gameObject);
-                    Destroy(gameObject);
+                    IEnumerator DestroyFire(ActionWizardObject actionObj)
+                    {
+                        Animator fireAnim = actionObj.GetComponent<Animator>();
+                        fireAnim.SetTrigger("Dissolve");
+                        yield return new WaitForSeconds(fireAnim.GetCurrentAnimatorClipInfo(0).Length - 0.3f);
+                        Destroy(actionObj.gameObject);
+                        Destroy(gameObject);
+                    }
+                    StartCoroutine(DestroyFire(actionObj));
+
+                    dontDestroyByDistance = true;
+
+                    GetComponent<SpriteRenderer>().enabled = false;
+                    GetComponent<Collider2D>().enabled = false;
+                    GetComponent<Light2D>().enabled = false;
                     break;
             }
     }
 
     private void SetWaterToIce(ActionWizardObject iceObject)
     {
+        Animator iceAnimator = iceObject.GetComponent<Animator>();
         iceObject.gameObject.layer = 3;
         iceObject.SetObjectType("Ice");
-        iceObject.CanPlaceSlime = true;
+        //iceObject.CanPlaceSlime = true;
+        iceAnimator.SetTrigger("Froze");
     }
 }

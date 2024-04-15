@@ -159,6 +159,7 @@ MonoBehaviour:
   highlighterPrefab: {fileID: 4696249887116033345, guid: 839b5f7037b548d4f83ae8df50b3801b, type: 3}
   actionLineLenght: 0
   spriteRenderer: {fileID: 4261229290300371299}
+  dirtChangeCooldown: 2
 --- !u!114 &-5901102627548282250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 
+  overwriteTilemap: 0
   selfPlacedTilemap: {fileID: 0}
   isSlime: 1
+  canPlaceSlime: 0
+  stopsMissles: 1
   width: 1
   height: 1

@@ -159,6 +159,7 @@ MonoBehaviour:
   highlighterPrefab: {fileID: 4696249887116033345, guid: 839b5f7037b548d4f83ae8df50b3801b, type: 3}
   actionLineLenght: 3
   spriteRenderer: {fileID: 2327461459732902614}
+  grassChangePeriod: 5
 --- !u!114 &6080571362975153752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78ac702102f66a4983790303417c9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectType: 
+  overwriteTilemap: 0
   selfPlacedTilemap: {fileID: 0}
   isSlime: 1
+  canPlaceSlime: 0
+  stopsMissles: 1
   width: 1
   height: 1

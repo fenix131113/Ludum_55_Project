@@ -174,7 +174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 
+  overwriteTilemap: 0
   selfPlacedTilemap: {fileID: 0}
   isSlime: 1
+  canPlaceSlime: 0
+  stopsMissles: 1
   width: 1
   height: 1

@@ -30,17 +30,33 @@ public class Fireball : MonoBehaviour
         ActionWizardObject actionObj = collision.GetComponent<ActionWizardObject>();
         if (collision.gameObject != ignoreGameObject && !actionObj)
             Destroy(gameObject);
-        else if(actionObj && actionObj.StopsMissles)
+        else if(actionObj && actionObj.StopsMissles && !actionObj.GetComponent<FireWizard>())
             Destroy(gameObject);
 
         else if (actionObj)
             switch (actionObj.ObjectType)
             {
-                case "Water":
                 case "Ice":
-                    Destroy(collision.gameObject);
+                    UnFrozeIce(actionObj);
+                    Destroy(gameObject);
+                    break;
+                case "IceWall":
+                    Destroy(actionObj.gameObject);
+                    Destroy(gameObject);
+                    break;
+                case "Water":
+                    Destroy(actionObj.gameObject);
                     Destroy(gameObject);
                     break;
             }
+    }
+
+    private void UnFrozeIce(ActionWizardObject iceObject)
+    {
+        Animator iceAnimator = iceObject.GetComponent<Animator>();
+        iceObject.gameObject.layer = 1;
+        iceObject.SetObjectType("Water");
+        //iceObject.CanPlaceSlime = true;
+        iceAnimator.SetTrigger("UnFroze");
     }
 }
