@@ -14,6 +14,7 @@ public class GameMenuController : MonoBehaviour
     [SerializeField] private RectTransform escMenuRect;
     [SerializeField] private RectTransform volumeSliderMenuRect;
     [SerializeField] private PlayerController player;
+    [SerializeField] private Slider volumeSlider;
 
     private bool isMenuOpened;
     private bool isOpenProcess;
@@ -67,5 +68,9 @@ public class GameMenuController : MonoBehaviour
     public void ExitToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    public void OnVolumeSliderChanged()
+    {
+        AudioListener.volume = volumeSlider.value;
     }
 }

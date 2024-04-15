@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class WizardsSummon : MonoBehaviour, IPointerClickHandler
 	[SerializeField] private Sprite[] buttonSprites;
 	[SerializeField] private RectTransform slimeIconRect;
 	[SerializeField] private float slimeIconOffset;
+	[SerializeField] private UnityEvent onClick;
 
     private WizardCell takedCell;
 	private bool canClick = true;
@@ -87,6 +89,7 @@ public class WizardsSummon : MonoBehaviour, IPointerClickHandler
 			CloseMenu();
 		else
 			OpenMenu();
+		onClick?.Invoke();
 	}
 
 	public void CheckMovingCell()
@@ -128,14 +131,12 @@ public class WizardsSummon : MonoBehaviour, IPointerClickHandler
 		Image moveImage = moveCellRect.GetComponent<Image>();
 		moveImage.sprite = takedCell.ExistIndicator.sprite;
 		moveImage.SetNativeSize();
-		moveImage.rectTransform.localScale *= 1.5f;
         moveCellRect.gameObject.SetActive(true);
 		isMovingCreatureCell = true;
 	}
 
 	public void DeactivateMovingCell()
 	{
-        moveCellRect.GetComponent<Image>().rectTransform.localScale /= 1.5f;
 
         moveCellRect.gameObject.SetActive(false);
 		isMovingCreatureCell = false;

@@ -8,7 +8,11 @@ public class PlayerController : MonoBehaviour
 
     private bool canControll = true;
 
-    public void SetControllStatus(bool status) => canControll = status;
+    public void SetControllStatus(bool status)
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        canControll = status;
+    }
     void Update()
     {
         if (!canControll)

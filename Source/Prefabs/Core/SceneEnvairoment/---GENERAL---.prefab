@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -870910910, guid: 3d4663d8e5247f743a847523ba9c7dab, type: 3}
+  m_Sprite: {fileID: 49771641, guid: ee214adb926c18745a0707b4c15c386f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1342329688, guid: 3d4663d8e5247f743a847523ba9c7dab, type: 3}
+  m_Sprite: {fileID: 1133237098, guid: ee214adb926c18745a0707b4c15c386f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -357,7 +357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 116}
+  m_AnchoredPosition: {x: 0, y: 116}
   m_SizeDelta: {x: -408.3048, y: -106.4063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2017083250536296118
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -712,7 +712,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7442689584701264101}
+        m_TargetAssemblyTypeName: GameMenuController, Assembly-CSharp
+        m_MethodName: OnVolumeSliderChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1913339037082288988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,9 +1256,9 @@ RectTransform:
   - {fileID: 1227504274060066365}
   m_Father: {fileID: 8890907837233351567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -960, y: -164}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.000019073, y: -139}
   m_SizeDelta: {x: 751.7783, y: 179.36469}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2577940229987713271
@@ -1575,6 +1587,9 @@ MonoBehaviour:
   - {fileID: 2036299749, guid: 3d4663d8e5247f743a847523ba9c7dab, type: 3}
   slimeIconRect: {fileID: 3052043191674635436}
   slimeIconOffset: 10
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3376925658786040516
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,6 +2248,7 @@ MonoBehaviour:
   escMenuRect: {fileID: 4266341102462086632}
   volumeSliderMenuRect: {fileID: 8864982250606761218}
   player: {fileID: 2510190969884321202}
+  volumeSlider: {fileID: 1185658028692784150}
 --- !u!114 &8807011512088300985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2248,7 +2264,6 @@ MonoBehaviour:
   screenFader: {fileID: 7667441558372687400}
   player: {fileID: 2510190969884321202}
   doorOpenSound: {fileID: 8300000, guid: 7621aea09aaec7b4c805d74b410ad753, type: 3}
-  openedDoorSprite: {fileID: 504055799, guid: cfac59b11dc78144da59e2e26c03727a, type: 3}
 --- !u!1 &5156910565355901715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,7 +2623,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1264359598, guid: 3d4663d8e5247f743a847523ba9c7dab, type: 3}
+  m_Sprite: {fileID: 1926203312, guid: ee214adb926c18745a0707b4c15c386f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2791,7 +2806,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -977396028, guid: 3d4663d8e5247f743a847523ba9c7dab, type: 3}
+  m_Sprite: {fileID: 1161365657, guid: ee214adb926c18745a0707b4c15c386f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2957,7 +2972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 548574805, guid: 3d4663d8e5247f743a847523ba9c7dab, type: 3}
+  m_Sprite: {fileID: -957156902, guid: ee214adb926c18745a0707b4c15c386f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

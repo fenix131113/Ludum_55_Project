@@ -1,18 +1,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlantsWizard : WizardBase
 {
     [SerializeField] private float grassChangePeriod = 5f;
     [SerializeField] private AudioClip dirtSound;
+    [SerializeField] private Canvas childCanvas;
+    [SerializeField] private Image timerFillerImg;
 
     private List<GameObject> grassHighliters = new();
+    private float timer;
 
+    protected override void BeforeInit()
+    {
+        childCanvas.worldCamera = Camera.main;
+    }
     protected override void AfterInit()
     {
         highlightersLine = new GameObject[WizardActionsController.Instance.GrassBlocks.Count];
-        InvokeRepeating(nameof(WizardAction), grassChangePeriod, grassChangePeriod);
+    }
+    private void Update()
+    {
+        TimerLogic();
+    }
+
+    private void TimerLogic()
+    {
+        if (timer > 0)
+            timer -= Time.deltaTime;
+        else
+        {
+            WizardAction();
+            timer = grassChangePeriod;
+        }
+
+        timerFillerImg.fillAmount = (grassChangePeriod - timer) / grassChangePeriod;
     }
 
     protected override void RotateWizard()
@@ -28,11 +52,7 @@ public class PlantsWizard : WizardBase
     public override void WizardAction()
     {
         WizardActionsController actions = WizardActionsController.Instance;
-        if (actions.GrassBlocks.Count > 0)
-        {
-            actions.ShakeCamera(1f);
-            SoundController.Instance.PlayOneShot(dirtSound);
-        }
+
         foreach (var block in actions.GrassBlocks)
             block.ChangeState();
     }
