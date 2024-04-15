@@ -6,8 +6,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
 
+    private bool canControll = true;
+
+    public void SetControllStatus(bool status) => canControll = status;
     void Update()
     {
+        if (!canControll)
+            return;
+
         Vector2 moveVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
 

@@ -160,6 +160,7 @@ MonoBehaviour:
   actionLineLenght: 0
   spriteRenderer: {fileID: 4261229290300371299}
   dirtChangeCooldown: 2
+  dirtSound: {fileID: 8300000, guid: 531ad73ddd765a54bb02de569cb3042d, type: 3}
 --- !u!114 &-5901102627548282250
 MonoBehaviour:
   m_ObjectHideFlags: 0

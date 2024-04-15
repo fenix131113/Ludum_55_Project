@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlantsWizard : WizardBase
 {
     [SerializeField] private float grassChangePeriod = 5f;
+    [SerializeField] private AudioClip dirtSound;
 
     private List<GameObject> grassHighliters = new();
 
@@ -27,6 +28,11 @@ public class PlantsWizard : WizardBase
     public override void WizardAction()
     {
         WizardActionsController actions = WizardActionsController.Instance;
+        if (actions.GrassBlocks.Count > 0)
+        {
+            actions.ShakeCamera(1f);
+            SoundController.Instance.PlayOneShot(dirtSound);
+        }
         foreach (var block in actions.GrassBlocks)
             block.ChangeState();
     }

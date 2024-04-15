@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -59,5 +60,11 @@ public class WizardActionsController : MonoBehaviour
                 if (actionCoords == coordinates)
                     return actionObject;
         return null;
+    }
+
+    public void ShakeCamera(float duration)
+    {
+        Vector3 startCameraPos = Camera.main.transform.position;
+        Camera.main.DOShakePosition(duration, 0.08f, 15, fadeOut: false).onComplete += () => Camera.main.transform.position = startCameraPos;
     }
 }

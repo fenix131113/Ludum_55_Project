@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Fireball : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class Fireball : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
     [SerializeField] private float fireballDistanceOffset;
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip iceSound;
 
     private GameObject ignoreGameObject;
     private Transform fireSlime;
@@ -20,6 +23,7 @@ public class Fireball : MonoBehaviour
         this.rotateIndex = rotateIndex;
         this.destroyDistance = destroyDistance;
         this.fireSlime = fireSlime;
+        SoundController.Instance.PlayOneShot(shootSound, 0.5f);
     }
     private void Update()
     {
@@ -42,23 +46,38 @@ public class Fireball : MonoBehaviour
             {
                 case "Ice":
                     UnFrozeIce(actionObj);
+                    SoundController.Instance.PlayOneShot(iceSound);
                     DestroyFireball();
                     break;
                 case "IceWall":
-                    Destroy(actionObj.gameObject);
-                    DestroyFireball();
+                    collision.GetComponent<Animator>().SetTrigger("Break");
+                    IEnumerator DestroyAfterAnim()
+                    {
+                        yield return new WaitForSeconds(0.68f);
+                        Destroy(actionObj.gameObject);
+                        Destroy(gameObject);
+                    }
+                    StartCoroutine(DestroyAfterAnim());
+                    DestroyFireball(false);
                     break;
                 case "Water":
-                    Destroy(actionObj.gameObject);
-                    DestroyFireball();
+                    collision.GetComponent<Animator>().SetTrigger("Evaporate");
+                    IEnumerator DestroyAfterAnimWaterEvaporate()
+                    {
+                        yield return new WaitForSeconds(0.5f);
+                        Destroy(actionObj.gameObject);
+                        Destroy(gameObject);
+                    }
+                    StartCoroutine(DestroyAfterAnimWaterEvaporate());
+                    DestroyFireball(false);
                     break;
             }
         if (collision.gameObject != ignoreGameObject && !actionObj)
             DestroyFireball();
-        else if (actionObj && actionObj.StopsMissles && !actionObj.GetComponent<FireWizard>())
+        else if (actionObj && actionObj.StopsMissles && !actionObj.GetComponent<FireWizard>() && !isStopped)
             DestroyFireball();
     }
-    private void DestroyFireball()
+    private void DestroyFireball(bool deleteSelf = true)
     {
         StopFireball();
         GetComponent<Collider2D>().enabled = false;
@@ -67,7 +86,15 @@ public class Fireball : MonoBehaviour
         IEnumerator WaitStopAnimAndDestroy()
         {
             yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length - 0.7f);
-            Destroy(gameObject);
+            if (deleteSelf)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<Light2D>().enabled = false;
+            }
         }
         StartCoroutine(WaitStopAnimAndDestroy());
     }

@@ -5,10 +5,11 @@ using UnityEngine;
 public class DirtWizard : WizardBase
 {
     [SerializeField] private float dirtChangeCooldown = 1.5f;
+    [SerializeField] private AudioClip dirtSound;
 
     private List<GameObject> dirtHighliters = new();
     private bool canChangeState = true;
-    
+
     protected override void AfterInit()
     {
         highlightersLine = new GameObject[WizardActionsController.Instance.DirtBlocks.Count];
@@ -30,9 +31,14 @@ public class DirtWizard : WizardBase
     {
         canChangeState = false;
 
+        if (WizardActionsController.Instance.DirtBlocks.Count > 0)
+        {
+            WizardActionsController.Instance.ShakeCamera(1f);
+            SoundController.Instance.PlayOneShot(dirtSound);
+        }
         foreach (DirtBlock block in WizardActionsController.Instance.DirtBlocks)
             block.ChangeState();
-        
+
         StartCoroutine(StateCooldown());
     }
 

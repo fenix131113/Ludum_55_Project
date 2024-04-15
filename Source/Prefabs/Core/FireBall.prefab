@@ -125,7 +125,9 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 2650082633023568083}
   anim: {fileID: 581358414903421895}
-  fireballDistanceOffset: -0.26
+  fireballDistanceOffset: 0.3
+  shootSound: {fileID: 8300000, guid: 12c082b35c7f5ed40b1a83bcee4e5e81, type: 3}
+  iceSound: {fileID: 8300000, guid: 4c9fda8ad7895c543b29f739525c27df, type: 3}
 --- !u!61 &3988677774194107773
 BoxCollider2D:
   m_ObjectHideFlags: 0

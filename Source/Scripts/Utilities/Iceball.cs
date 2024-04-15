@@ -8,6 +8,8 @@ public class Iceball : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
     [SerializeField] private float iceballDistanceOffset;
+    [SerializeField] private AudioClip iceSound;
+    [SerializeField] private AudioClip iceBallSound;
 
     private GameObject ignoreGameObject;
     private Transform iceSlime;
@@ -22,6 +24,7 @@ public class Iceball : MonoBehaviour
         this.rotateIndex = rotateIndex;
         this.destroyDistance = destroyDistance;
         this.iceSlime = iceSlime;
+        SoundController.Instance.PlayOneShot(iceBallSound, 0.5f);
     }
     private void Update()
     {
@@ -47,6 +50,7 @@ public class Iceball : MonoBehaviour
             {
                 case "Water":
                     SetWaterToIce(actionObj);
+                    SoundController.Instance.PlayOneShot(iceSound);
                     DestroyIceball();
                     break;
                 case "FireWall":

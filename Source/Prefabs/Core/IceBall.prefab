@@ -248,3 +248,5 @@ MonoBehaviour:
   rb: {fileID: -394346108373876041}
   anim: {fileID: 7733571482016511144}
   iceballDistanceOffset: -0.15
+  iceSound: {fileID: 8300000, guid: 4c9fda8ad7895c543b29f739525c27df, type: 3}
+  iceBallSound: {fileID: 8300000, guid: 2d31432a93f9c6b47b686224cfa86d91, type: 3}

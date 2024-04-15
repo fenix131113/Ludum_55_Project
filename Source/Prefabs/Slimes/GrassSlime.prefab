@@ -160,6 +160,7 @@ MonoBehaviour:
   actionLineLenght: 3
   spriteRenderer: {fileID: 2327461459732902614}
   grassChangePeriod: 5
+  dirtSound: {fileID: 8300000, guid: 531ad73ddd765a54bb02de569cb3042d, type: 3}
 --- !u!114 &6080571362975153752
 MonoBehaviour:
   m_ObjectHideFlags: 0
