@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TimedLoad : MonoBehaviour
+public class GateLevelLoader : MonoBehaviour
 {
     [SerializeField] private int loadLevelIndex;
 

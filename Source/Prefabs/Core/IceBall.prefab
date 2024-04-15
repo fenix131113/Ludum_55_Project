@@ -246,3 +246,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rb: {fileID: -394346108373876041}
+  anim: {fileID: 7733571482016511144}
+  iceballDistanceOffset: -0.15

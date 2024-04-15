@@ -6,13 +6,16 @@ public class Iceball : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator anim;
+    [SerializeField] private float iceballDistanceOffset;
 
     private GameObject ignoreGameObject;
     private Transform iceSlime;
     private float destroyDistance;
     private bool dontDestroyByDistance;
-
+    private bool isStopped;
     private int rotateIndex;
+
     public void Init(int rotateIndex, GameObject ignoreObject, float destroyDistance, Transform iceSlime)
     {
         ignoreGameObject = ignoreObject;
@@ -24,9 +27,11 @@ public class Iceball : MonoBehaviour
     {
         FourRotateOffsetArgs rotate = FourRotateOffsetArgs.fourRotates[rotateIndex];
 
-        rb.velocity = new Vector2(rotate.TargetXOffset, rotate.TargetYOffset) * speed;
-        if (Vector2.Distance(transform.position, iceSlime.position) >= destroyDistance && !dontDestroyByDistance)
-            Destroy(gameObject);
+        if (!isStopped)
+            rb.velocity = new Vector2(rotate.TargetXOffset, rotate.TargetYOffset) * speed;
+
+        if (Vector2.Distance(transform.position, iceSlime.position) + iceballDistanceOffset >= destroyDistance && !dontDestroyByDistance)
+            DestroyIceball();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,15 +39,15 @@ public class Iceball : MonoBehaviour
         ActionWizardObject actionObj = collision.GetComponent<ActionWizardObject>();
 
         if (collision.gameObject != ignoreGameObject && !actionObj)
-            Destroy(gameObject);
+            DestroyIceball();
         else if (actionObj && actionObj.StopsMissles && !actionObj.GetComponent<WaterWizard>())
-            Destroy(gameObject);
+            DestroyIceball();
         else if (actionObj)
             switch (actionObj.ObjectType)
             {
                 case "Water":
                     SetWaterToIce(actionObj);
-                    Destroy(gameObject);
+                    DestroyIceball();
                     break;
                 case "FireWall":
                     IEnumerator DestroyFire(ActionWizardObject actionObj)
@@ -51,7 +56,7 @@ public class Iceball : MonoBehaviour
                         fireAnim.SetTrigger("Dissolve");
                         yield return new WaitForSeconds(fireAnim.GetCurrentAnimatorClipInfo(0).Length - 0.3f);
                         Destroy(actionObj.gameObject);
-                        Destroy(gameObject);
+                        DestroyIceball();
                     }
                     StartCoroutine(DestroyFire(actionObj));
 
@@ -63,7 +68,25 @@ public class Iceball : MonoBehaviour
                     break;
             }
     }
+    private void DestroyIceball()
+    {
+        StopIceball();
+        GetComponent<Collider2D>().enabled = false;
+        anim.SetTrigger("Stop");
 
+        IEnumerator WaitStopAnimAndDestroy()
+        {
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length - 0.7f);
+            Destroy(gameObject);
+        }
+        StartCoroutine(WaitStopAnimAndDestroy());
+    }
+
+    private void StopIceball()
+    {
+        isStopped = true;
+        rb.velocity = Vector3.zero;
+    }
     private void SetWaterToIce(ActionWizardObject iceObject)
     {
         Animator iceAnimator = iceObject.GetComponent<Animator>();
