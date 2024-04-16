@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlighterPrefab: {fileID: 4696249887116033345, guid: 839b5f7037b548d4f83ae8df50b3801b, type: 3}
-  actionLineLenght: 4
+  actionLineLenght: 5
   spriteRenderer: {fileID: 7351265882625471030}
-  shootInterval: 2
+  shootInterval: 3
   iceballPrefab: {fileID: 4890413254006438366, guid: 55d312fbd0b727648944f1f38d602881, type: 3}
 --- !u!114 &-6431534051422886558
 MonoBehaviour:

@@ -161,7 +161,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6433194043858270270}
   windPrefab: {fileID: 3324905497570415718, guid: 3c678b6827386b840a53fde0573ccc46, type: 3}
   windAnimClip: {fileID: 7400000, guid: a345fd821242bb74d91499ad7ae29e80, type: 2}
-  shootInterval: 2
+  shootInterval: 3
 --- !u!114 &-86606997926825014
 MonoBehaviour:
   m_ObjectHideFlags: 0
